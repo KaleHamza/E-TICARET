@@ -1,0 +1,36 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: rgba(124, 47, 47, 0.932);
+}
+
+.errorlist {
+    list-style: none;
+    color: darkviolet;
+    margin: 0;
+    padding: 0;
+}
+
+.invalid input, .invalid textarea{
+    border-color:crimson;
+}
+.columnfor4{
+    border-radius: 12px;
+    border: 2px solid red;
+    width: 25%;
+    height: 25%;
+    background-color: burlywood;
+    float: left;
+    padding: 15px;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+.imgclass{
+    width: 5px;
+    height: 5px;
+}
