@@ -1,0 +1,14 @@
+body{
+    background-color: rgba(124, 47, 47, 0.932);
+}
+
+.errorlist {
+    list-style: none;
+    color: darkviolet;
+    margin: 0;
+    padding: 0;
+}
+
+.invalid input, .invalid textarea{
+    border-color:crimson;
+}

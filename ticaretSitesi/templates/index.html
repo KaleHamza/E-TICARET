@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+
+    <title>Hello</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg  navbar-dark" style="background-color: #490e70;">
+        <div class = "container">
+            <a href="#" class="navbar-brand">E-Commarce</a>
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Elektronics</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Personel Care Products</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Computer</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Hobbies </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">About</a>
+                </li>
+            </ul>
+    
+            <form class="d-flex" action="#">
+                <input class = "form-control me-1" type="text" name="q" placeholder = "What are you looking for?">
+                <button type="submit" class="btn btn-secondary">Search</button>
+            </form>
+        </div>
+    
+    </nav>
+    <input type="button" value="Sign Up" ondblclick="">
+
+</body>
+</html>
