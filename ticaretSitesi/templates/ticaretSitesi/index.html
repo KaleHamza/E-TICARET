@@ -7,47 +7,35 @@
 {% endblock %}
 
 {% block css_files %}
-    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'ticaretSitesi/css/style.css' %}">
 {% endblock %}
 
-{% block content %}
-    <!--<input type="button" value="Sign Up" ondblclick="">-->
-    <div class="row">
-        <div class="columnfor4">
-            <img class="imgclass" src="{% static 'ticaretSitesi/img/computer1.png' %}" alt="" >
-            <p>
-                
-            </p>
-            <p>
-                
-            </p>
-        </div>
-        <div class="columnfor4">
-            <img class="imgclass" src="{% static 'ticaretSitesi/img/computer2.png' %}" alt="" >
-            <p>
-                
-            </p>
-            <p>
-                
-            </p>
-        </div>
-        <div class="columnfor4">
-            <img class="imgclass" src="{% static 'ticaretSitesi/img/computer3.png' %}" alt="" >
-            <p>
-                
-            </p>
-            <p>
-                
-            </p>
-        </div>
-        <div class="columnfor4">
-            <img class="imgclass" src="{% static 'ticaretSitesi/img/computer1.png' %}" alt="" >
-            <p>
-                
-            </p>
-            <p>
-                
-            </p>
-        </div>
+    {% block content %}
+    <style>
+
+    </style>
+        
+    <div class="container mt-5">
+        
+
+                <div class="col-12">
+                    {% if products|length == 0 %}
+                        <div class="alert alert-warning">Kurs Bulunamadı.</div>
+                    {% else %}
+                        <div class="row">
+
+                            {% for product in products %}
+                                <div class="col-4 ">
+                                    {% include 'ticaretSitesi/partials/_product.html' %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </ul>
+        
     </div>
-{% endblock content %}
+
+    {% endblock content %}
+
+

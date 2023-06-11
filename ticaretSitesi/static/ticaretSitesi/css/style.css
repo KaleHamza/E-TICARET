@@ -20,7 +20,7 @@ body{
     border: 2px solid red;
     width: 25%;
     height: 25%;
-    background-color: burlywood;
+    background-color: rgb(19, 19, 19);
     float: left;
     padding: 15px;
 }
@@ -31,6 +31,6 @@ body{
   }
 
 .imgclass{
-    width: 5px;
-    height: 5px;
+    width: 100px;
+    height: 100px;
 }

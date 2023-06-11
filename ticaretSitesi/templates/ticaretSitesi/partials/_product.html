@@ -1,0 +1,81 @@
+{% load static %}
+{% comment %} <div class="card mb-3">
+    <div class="row">
+        <div class="col-2">
+            <img class="img-fluid rounded-start" src="{% static 'ticaretSitesi/img/'|add:product.imageUrl %}" alt="product.title">
+        </div>
+        <div class="col-4">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{% url 'product_details' product.slug %}">
+                        {{ product.title }}
+                    </a>
+                </h5>
+                <p class="card-text">{{product.description}}</p>
+                <p>Price: {{product.price}}</p>
+                <p>Stock: {{product.stock}}</p>
+            </div>
+        </div>
+    </div>
+</div> {% endcomment %}
+
+<style>
+    .card{
+        background-color: yellow;
+    }
+    .background-category{
+        background-color: red;
+        width: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px; 
+    }
+    .card-deck{
+        height: 290px;
+        width: 200px;
+        background-color: yellow;
+        border-radius: 12px;    
+    }
+    .card-img-top {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 40%;
+        height: 120px;
+        width: 120px;
+    }
+
+    .card-price {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 10px;
+    }
+
+    .card-stock {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 10px;
+    }
+</style>
+    <div class="card-deck ">
+        <div class="card">
+                <img class="card-img-top" src="{% static 'ticaretSitesi/img/'|add:product.imageUrl %}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="{% url 'product_details' product.slug %}">
+                            {{ product.title }}
+                        </a>
+                    </h5>
+                    <p class="card-text">{{ product.description }}</p>
+                    <div class="card-price">Price: {{ product.price }}</div>
+                    <div class="card-stock">Stock: {{ product.stock }}</div>
+
+                </div>   
+        </div>
+            
+                <h6  class= "background-category">#{{product.category}}</h6>
+           
+    </div>
+
