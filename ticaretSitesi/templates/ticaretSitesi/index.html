@@ -16,14 +16,11 @@
     </style>
         
     <div class="container mt-5">
-        
-
                 <div class="col-12">
                     {% if products|length == 0 %}
                         <div class="alert alert-warning">Kurs Bulunamadı.</div>
                     {% else %}
                         <div class="row">
-
                             {% for product in products %}
                                 <div class="col-4 ">
                                     {% include 'ticaretSitesi/partials/_product.html' %}
@@ -32,8 +29,6 @@
                         </div>
                     {% endif %}
                 </div>
-            </ul>
-        
     </div>
 
     {% endblock content %}
