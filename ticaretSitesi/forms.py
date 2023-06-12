@@ -7,19 +7,23 @@ from .models import Customer
 class CustormerForm(forms.ModelForm):
     class Meta:
         model = Customer
-        fields = ('__all__')
+        fields = ('username','surname','password','email','Current','adresses')
         labels = {
-            'title':"Culto Name",
-            'description':"Culto Description",
-            'date':"Movie date: dd-mm-yyyy",
-            'slug':"Slug: peliculas-de-culto",
-            'isActive':"Want to publish?",
-            'isHome':"Want to see Home Page?"
+            'username':"User name",
+            'surname':"Surname",
+            'password':"Password",
+            'email':"e-mail",
+            'phone':"phone",
+            'Current':"Current:",
+            'adresses':"adress:"
             
         }
         widgets = {
-            "title":TextInput(attrs={"class":"form-control"}),
-            "description":Textarea(attrs={"class":"form-control"}),
-            "date":TextInput(attrs={"class":"form-control"}),
-            "slug":TextInput(attrs={"class":"form-control"}),
+            "username":TextInput(attrs={"class":"form-control"}),
+            "surname":TextInput(attrs={"class":"form-control"}),
+            "password":TextInput(attrs={"class":"form-control"}),
+            "Current":TextInput(attrs={"class":"form-control"}),
+            'phone':TextInput(attrs={"class":"form-control"}),
+            'adresses':TextInput(attrs={"class":"form-control"}),
+            'email':TextInput(attrs={"class":"form-control"})
         }

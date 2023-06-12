@@ -2,7 +2,7 @@
 
 <style>
     .card{
-        background-color: Green;
+        background-color: lightGreen;
         margin-left: 15px;
         margin-right: 15px;
         margin-top: 15px;
@@ -11,7 +11,7 @@
     .card-deck{
         height: 320px;
         width: 300px;
-        background-color: lightGreen;
+        background-color: white;
         border-radius: 12px; 
         
         
@@ -31,7 +31,6 @@
         bottom: 0;
         left: 0;
         padding: 10px;
-        
     }
 
     .card-stock {
@@ -39,22 +38,25 @@
         bottom: 0;
         right: 0;
         padding: 10px;
-        
     }
 </style>
     <div class="card-deck ">
         <div class="card">
-                <img class="card-img-top" src="{% static 'ticaretSitesi/img/'|add:product.imageUrl %}" alt="Card image cap">
+                <img class="card-img-top" src="{% static 'ticaretSitesi/img/'|add:lowprice.imageUrl %}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <a href="{% url 'product_details' product.slug %}">
-                            {{ product.title }}
+                        <a href="{% url 'product_details' lowprice.slug %}">
+                            {{ lowprice.title }}
                         </a>
                     </h5>
-                        <p class="card-text" style="color:#000080;font-weight:bold;font-size:20px;background-color:white;border:2px solid black;border-radius:15px;" >Description: {{ product.description }}</p>
-                        <div class="card-price" >Price: {{ product.price }} $</div>
-                        <div class="card-stock" style="color:black;font-weight:bold;font-size:20px;">Stock: {{ product.stock }} piece</div>                
+                    <p class="card-text" style="color:#000080;font-weight:bold;font-size:20px;background-color:white;border:2px solid black;border-radius:15px;">{{ lowprice.description }}</p>
+                    <div class="card-price">Price: {{ lowprice.price }} $</div>
+                    <div class="card-stock" style="color:black;font-weight:bold;font-size:20px;">Stock: {{ lowprice.stock }} piece</div>
+
                 </div>   
-        </div>              
+        </div>
+            
+             
+           
     </div>
 

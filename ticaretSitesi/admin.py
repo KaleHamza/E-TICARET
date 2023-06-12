@@ -8,14 +8,20 @@ class CustomerAdmin(admin.ModelAdmin):
     list_display = ("username","surname","password","email", "phone","Current","adresses")
 admin.site.register(Customer,CustomerAdmin)
 
+@admin.register(Product)
 class ProductAdmin(admin.ModelAdmin): 
-    list_display = ("title","description","color","imageUrl", "price","stock","category")
+    list_display = ("title","description","color","imageUrl", "slug","price","stock","category_list")
+    list_display_links=("title","slug")
+    prepopulated_fields = {"slug": ("title",),}
+    list_filter = ("title","color")
+    read_only_fields = ("slug")
+    search_fields = ("title","color")
+
     def category_list(self, obj):
         html = ""
-        for category in obj.categories.all():
-            html+= category.name+" "
+        for category in obj.category.all():
+            html+= category.categoryName+" "
         return html
-admin.site.register(Product,ProductAdmin)
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ("categoryName",)

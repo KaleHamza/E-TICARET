@@ -28,8 +28,7 @@ class Product(models.Model):
     imageUrl = models.CharField(max_length=50, blank=False)
     price = models.FloatField()
     stock = models.IntegerField()
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     slug = models.SlugField(default="", blank=True,null = False, unique=True, primary_key=True)
-    
+    category = models.ManyToManyField(Category)
     def __str__(self):
         return f"{self.title}"
