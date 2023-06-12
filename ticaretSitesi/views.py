@@ -19,6 +19,7 @@ from django.contrib.auth.forms import AuthenticationForm
 
 from django.template import Context
 # Create your views here.
+
 def index(request):
     # template = loader.get_template('ticaretSitesi/index.html')
     # return HttpResponse(template.render())
@@ -94,6 +95,7 @@ def signup(request):
         form = CustormerForm()
     return render(request, "ticaretSitesi/signup.html", {"form":form})
 
+sistemeGiris=False
 def login(request):
     if request.method == 'POST':
         form = CustormerForm(request.POST)
@@ -103,6 +105,8 @@ def login(request):
             password = form.cleaned_data['password']
             for i in qs:
                 if(i[0]==email and i[1]==password):
+                    global sistemGiris
+                    sistemeGiris=True
                     return redirect('/')
             
     else:

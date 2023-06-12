@@ -3,5 +3,17 @@ function signUp(){
 }
 
 function logIn(){
-    window.open('/login',"_blank")
+    window.open('/login',"_blank");
 }
+
+function profile(){
+    window.open('/',"_blank")
+}
+
+function logout(){
+    window.open('/',"_blank");
+}
+
+
+
+
