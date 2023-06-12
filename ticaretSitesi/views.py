@@ -98,12 +98,12 @@ def login(request):
     if request.method == 'POST':
         form = CustormerForm(request.POST)
         if form.is_valid():
-            #qs = Customer.objects.values_list("email","password")
+            qs = Customer.objects.values_list("email","password")
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
-            # for i in qs:
-            #     if(qs[i][0]==email and qs[i][1]==password):
-            return redirect('/')
+            for i in qs:
+                if(i[0]==email and i[1]==password):
+                    return redirect('/')
             
     else:
         form = CustormerForm()
@@ -127,59 +127,25 @@ def productsDetail(request,slug):
 
 def about(request):
     return render(request, 'ticaretSitesi/about.html')
-@csrf_exempt
-def basketcorba(request):
-    if request.method == 'POST':
-        form=ProductForm(request.POST)
-        print(form)
-        if form.is_valid():
-            a =form.cleaned_data['title']
-            print(a)
-            print("sonra",product.title)
-            #product.title = a
+
+def basket(request):
+    #if request.method == 'POST':
+     #   form=ProductForm(request.POST)
+      #  print(form)
+       # if form.is_valid():
+        #    a =form.cleaned_data['title']
+         #   print(a)
+          #  print("sonra",product.title)
+           # #product.title = a
             
-            return redirect('/')
-        else:
-            print("elsedeyim")
-            form = ProductForm()
+            #return redirect('/')
+        #else:
+         #   print("elsedeyim")
+          #  form = ProductForm()
     
     #return render(request, 'basket.html', {'form': form})
     return render(request, 'ticaretSitesi/basket.html')
 
-def basket(request, category_slug, product_slug):
-    # Create instance of Cart class
-    cart = Product(request)
-
-    product = get_object_or_404(Product, category__slug=category_slug, slug=product_slug)
-
-    # Check whether the AddToCart button is clicked or not
-    if request.method == 'POST':
-        form = ProductForm(request.POST)
-
-        if form.is_valid():
-            title = form.cleaned_data['title']
-            cart.add(product_id=product.id, title=title, update_title=False)
-
-            messages.success(request, "The product was added to the cart.")
-
-            return redirect('product:product', title=title )            
-    
-    else:
-        form = ProductForm()
-
-    similar_products = list(product.category.products.exclude(id=product.id))
-
-    # If more than 4 similar products, then get 4 random products 
-    if len(similar_products) >= 4:
-        similar_products = random.sample(similar_products, 4)
-    
-    context = {
-        'product': product,
-        'similar_products': similar_products,
-        'form': form,
-    }
-
-    return render(request, 'ticaretSitesi/basket.html', context)
 
 def getProductByCategory(request, slug):
     products = Product.objects.filter(category__slug=slug).order_by("title")
