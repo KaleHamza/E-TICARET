@@ -10,6 +10,8 @@ urlpatterns=[
     path('hobbies', views.hobbies, name="hobbies"),
     path('signup', views.signup, name="signup"),
     path('login', views.login,name='login'),
+    path('about',views.about,name='about'),
+    path('basket',views.basket,name='basket'),
     path('<slug:slug>', views.productsDetail, name="product_details"),
-     path('category/<slug:slug>', views.getProductByCategory, name = 'products_by_category'),
+    path('category/<slug:slug>', views.getProductByCategory, name = 'products_by_category'),
 ]

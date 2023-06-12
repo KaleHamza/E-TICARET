@@ -7,9 +7,16 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.contrib.auth import authenticate, login
 from django.db.models import Q
-from .forms import CustormerForm
+from .forms import CustormerForm,ProductForm
 from .models import Product,Category
 from .models import Customer
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.forms import AuthenticationForm
+
+from django.template import Context
 # Create your views here.
 def index(request):
     # template = loader.get_template('ticaretSitesi/index.html')
@@ -86,59 +93,57 @@ def signup(request):
         form = CustormerForm()
     return render(request, "ticaretSitesi/signup.html", {"form":form})
 
-# def login(request):
-#     if request.method == "POST":
-#         form = CustormerForm(request.POST)
-#         print("if e girdi")
-#          #if form.is_valid():
-#          #testemail=request.POST["email"]
-#         testemail = request.POST.get('inputEmail')
-#         testpassword = request.POST.get('inputPassword')
-#         print("test e mail" ,testemail)
-#         print("test password" ,testpassword)
-#         for each in Customer.objects.all():
-#             print("for e girdi")
-#             email=each.email
-#             password=each.password
-#             print(email)
-#             print(password)
-#             if(testemail==email and testpassword == password):
-#                 print("for un ifine girdi")
-#                 return redirect("/")
-#          #else:
-#          #print("Test başarısız")
-#     else:
-#         print("else e girdi")
-#         form = CustormerForm()
-#     return render(request, "ticaretSitesi/login.html", {"form":form})
-
-
 def login(request):
-    
-    # future -> ?next=/articles/create/
-    if request.method == "POST":
-        form = CustormerForm(request, data=request.POST)
+    if request.method == 'POST':
+        form = CustormerForm(request.POST)
         if form.is_valid():
-            qs = Customer.objects.values_list("email","password")
-            testemail=request.POST["id_email"]
-            testpassword=request.POST["id_password"]
-            for i in qs:
-                if(qs[i][0]==testemail and qs[i][1]==testpassword):
-                    return redirect('/')
+            #qs = Customer.objects.values_list("email","password")
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            # for i in qs:
+            #     if(qs[i][0]==email and qs[i][1]==password):
+            return redirect('/')
+            
     else:
-        form = CustormerForm(request)
-    context = {
-        "form": form
-    }
-    return render(request, "ticaretSitesi/login.html", context)
-
+        form = CustormerForm()
+    
+    return render(request, 'ticaretSitesi/login.html', {'form': form})
 
 def productsDetail(request,slug):
     product = get_object_or_404(Product, slug=slug)
+    if request.method == 'POST':
+        print(product.stock)
+        product.stock-=1
+        print("sonra",product.stock)
+        product.save()
+        return redirect('/')
+
+        
     context = {
         'product': product
     }
     return render(request, 'ticaretSitesi/details.html', context)
+
+def about(request):
+    return render(request, 'ticaretSitesi/about.html')
+@csrf_exempt
+def basket(request):
+    if request.method == 'POST':
+        form=ProductForm(request.POST)
+        print(form)
+        if form.is_valid():
+            a =form.cleaned_data['title']
+            print(a)
+            print("sonra",product.title)
+            #product.title = a
+            
+            return redirect('/')
+        else:
+            print("elsedeyim")
+            form = ProductForm()
+    
+    #return render(request, 'basket.html', {'form': form})
+    return render(request, 'ticaretSitesi/basket.html')
 
 def getProductByCategory(request, slug):
     products = Product.objects.filter(category__slug=slug).order_by("title")
@@ -153,3 +158,4 @@ def getProductByCategory(request, slug):
         'page_obj': page_obj,
         'selectedCategory':slug
     })
+

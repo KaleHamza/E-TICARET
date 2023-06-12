@@ -43,8 +43,8 @@
     }
 </style>
     <div class="card-deck ">
-        <div class="card">
-                <img class="card-img-top" src="{% static 'ticaretSitesi/img/'|add:product.imageUrl %}" alt="Card image cap">
+        <div class="card" >
+                <img class="card-img-top"  src="{% static 'ticaretSitesi/img/'|add:product.imageUrl %}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">
                         <a href="{% url 'product_details' product.slug %}">

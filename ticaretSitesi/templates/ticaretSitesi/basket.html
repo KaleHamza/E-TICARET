@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block page_title %}
+    My Basket
+{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'ticaretSitesi/css/style.css' %}">
+{% endblock %}
+
+    {% block content %}
+
+  
+    <style>
+        .cok-satan{
+            text-align:center;
+            font-size:25px;
+            background-color:white;
+            width:100%;
+            height:50px;
+            color:purple;
+            border:3px solid purple;
+            
+            border-radius:12px;
+        }
+    </style>
+    <div class="cok-satan">
+        
+        MY BASKETS ARE:
+    </div>
+
+    <div class="container mt-5">
+                <div class="col-12">
+                    {% if products|length == 0 %}
+                        <div class="alert alert-warning">No Products</div>
+                    {% else %}
+                        <div class="row">
+                            {% for product in products %}
+                                <div class="col-4 ">
+                                    {% include 'ticaretSitesi/partials/_product.html' %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+    </div>
+
+    <div class="cok-satan">
+       FOR LOOKING BEFORE
+    </div>
+
+    <div class="container mt-5">
+        <div class="col-12">
+            {% if lowprices|length == 0 %}
+                <div class="alert alert-warning">No Product</div>
+            {% else %}
+                <div class="row">
+                    {% for lowprice in lowprices %}
+                        <div class="col-4 ">
+                            {% include 'ticaretSitesi/partials/_lowprice.html' %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+</div>
+    
+    {% endblock content %}
+
+

@@ -12,14 +12,25 @@
 
     {% block content %}
     <style>
-
+        .history{
+        background-color:purple;
+        width:100px;
+        height:50px;
+        border:2px solid blue;
+        border-radius:15px;
+        color:white;
+        font-size:20px;
+        margin:20px;
+    }
     </style>
         
     <div class="container mt-3">
         <div class="row">
             <div class="col-2 ">
-                {% include 'ticaretSitesi/partials/_categories.html' %}                
+                {% include 'ticaretSitesi/partials/_categories.html' %}     
+                       
             </div>
+            
             <div class="col-10 ">
                 
                 {% if products|length == 0 %}
@@ -36,8 +47,11 @@
             </div>
         </div>
     </div>
-
-
+    
+    <div>
+        <input type="button" class="history"value="Back" name="backButton" onclick="window.history.back()">
+        <input type="button" class="history" value="forward" name="forwardButton" onclick="window.history.forward()">
+    <div>    
     {% endblock content %}
 
 

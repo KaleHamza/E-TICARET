@@ -11,7 +11,6 @@
 {% endblock %}
 
 {% block content %}
-
 <style>
     .row{
         background-color: lightGreen;
@@ -25,9 +24,17 @@
         width: 300px;
     }
 
-
-
-    
+    .history{
+        background-color:purple;
+        width:150px;
+        height:50px;
+        border:2px solid blue;
+        border-radius:15px;
+        color:white;
+        font-size:20px;
+        margin:20px;
+    }
+ 
 </style>
 
     <div class="container mt-3">
@@ -40,8 +47,19 @@
                 <p>{{product.description}}</p>
                 <p >Price: {{product.price}} $</p>
                 <p >Stock: {{product.stock}}</p>
+                <form action="{% url 'basket' %}" method= "post" enctype = "multipart/from-data">
+                    {% csrf_token %}
+                    <input type="text" value="{{form.title}}" name="title">
+                    <input type="submit" value="Add Basket">
+                </form>
+                
+                
+
             </div>
         </div>
     </div>
-
+    <div>
+        <input type="button" class="history"value="Back" name="backButton" onclick="window.history.back()">
+        <input type="button" class="history" value="forward" name="forwardButton" onclick="window.history.forward()">
+    <div>
 {% endblock content %}
