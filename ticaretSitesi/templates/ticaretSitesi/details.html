@@ -47,10 +47,17 @@
                 <p>{{product.description}}</p>
                 <p >Price: {{product.price}} $</p>
                 <p >Stock: {{product.stock}}</p>
-                <form action="{% url 'basket' %}" method= "post" enctype = "multipart/from-data">
+                <form method="post" action="">
                     {% csrf_token %}
-                    <input type="text" value="{{form.title}}" name="title">
-                    <input type="submit" value="Add Basket">
+            
+                    <div class="field has-addons">
+                        <div class="control">
+                            <input type="text" name="title" style="visibility:hidden;">
+                        </div>
+                        <div class="control">
+                            <button class="button is-dark is-uppercase">Add to Cart</button>
+                        </div>
+                    </div>
                 </form>
                 
                 
