@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block page_title %}
-    My Basket
+    Admin
 {% endblock %}
 
 {% block css_files %}
@@ -11,7 +11,9 @@
 {% endblock %}
 
     {% block content %}
-  
+
+    {% include 'partials/_profile.html'%}
+    
     <style>
         .cok-satan{
             text-align:center;
@@ -26,8 +28,7 @@
         }
     </style>
     <div class="cok-satan">
-        
-        MY BASKETS ARE:
+        Çok satan ürünler
     </div>
 
     <div class="container mt-5">
@@ -47,7 +48,7 @@
     </div>
 
     <div class="cok-satan">
-       FOR LOOKING BEFORE
+        Ucuz Ürünler
     </div>
 
     <div class="container mt-5">
@@ -65,7 +66,6 @@
             {% endif %}
         </div>
 </div>
-    
     
     {% endblock content %}
 

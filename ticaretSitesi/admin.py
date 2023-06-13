@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Customer, Product
+from .models import Category, Customer, Product,AktifKullanici
 
 # Register your models here.
 
@@ -28,4 +28,8 @@ class CategoryAdmin(admin.ModelAdmin):
     def course_count(self, obj):
         return obj.course_set.count()
 admin.site.register(Category,CategoryAdmin)
+
+@admin.register(AktifKullanici)
+class AktifKullaniciAdmin(admin.ModelAdmin):
+    list_display = ("email",)
 

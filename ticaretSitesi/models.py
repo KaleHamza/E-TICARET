@@ -9,7 +9,7 @@ class Customer(models.Model):
     phone = models.CharField(max_length=30)
     Current = models.FloatField()
     adresses = models.CharField(max_length=250)
-
+    basket = models.JSONField(default=list,null=True)
     def __str__(self):
         return f"{self.username}"
 
@@ -32,3 +32,6 @@ class Product(models.Model):
     category = models.ManyToManyField(Category)
     def __str__(self):
         return f"{self.title}"
+
+class AktifKullanici(models.Model):
+    email = models.EmailField(max_length=200)
